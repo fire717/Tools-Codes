@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery表单验证</title>
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			//添加星号
+			$("form :input.required").each(function() {
+				var $required = $("<strong class='high'> *</strong>");
+				$(this).parent().append($required);
+			});
+
+			//设置移出检测
+			$("form :input").blur(function() {
+				var $parent = $(this).parent();
+				$parent.find(".formtips").remove();
+				//用户名
+				if ($(this).is('#username')) {
+					if (this.value==''||this.value.length<6) {
+						var errorMsg = '请至少输入6位';
+						$parent.append('<span class="formtips onError">'+errorMsg+'</span>');
+					}
+					else{
+						var okMsg = '输入成功';
+						$parent.append('<span class="formtips onError">'+okMsg+'</span>');
+					}
+				}
+				//邮箱
+				if ($(this).is("#email")) {
+					if (this.value==''||(  !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value) ) ) {
+						var errorMsg = '请输入正确的邮箱';
+						$parent.append('<span class="formtips onError">'+errorMsg+'</span>');
+					}
+					else{
+						var okMsg = '输入成功';
+						$parent.append('<span class="formtips onError">'+okMsg+'</span>');
+					}
+				}
+			});
+
+		})
+	</script>
+
+</head>
+<body>
+	<div class="mainform">
+		<form method="post" action="">
+			<div class="int">
+				<label for="username">用户名:</label>
+				<input type="text" id="username" class="required" />
+			</div>
+			<div class="int">
+				<label for="email">邮箱:</label>
+				<input type="text" id="email" class="required" />
+			</div>
+			<div class="int">
+				<label for="personinfo">个人资料:</label>
+				<input type="text" id="personinfo" />
+			</div>
+			<div class="sub">
+				<input type="submit" value="提交" /><input type="reset" id="res" />
+			</div>
+		</form>
+	</div>
+<style type="text/css">
+		.mainform{
+			width: 900px;
+			padding:20px 0; 
+			border:1px solid #336699;
+			margin: 40px auto;
+		}
+		.int label{
+			float:left; 
+			width:100px; 
+			text-align:right;
+		}
+		.int input{
+			width: 160px;
+			margin-left: 4px;
+		}
+		.sub{
+			text-align: center;
+		}
+		.high{
+			color: red;
+		}
+</style>
+</body>
+</html>
