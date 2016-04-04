@@ -1,0 +1,17 @@
+//较新的浏览器已经支持HTML5中的此方法，以下用于兼容老浏览器
+//node表示搜索起点
+function getElementsByClassName(node,classname) {
+	if (node.getElementsByClassName) {
+		return node.getElementsByClassName(classname); /*使用现有方法*/
+	}
+	else{
+		var results = new Array();
+		var elems = node.getElementsByTagName("*");
+		for (var i=0; i<elems.length; i++) {
+			if (elems[i].className.indexOf(classname)!=-1 {
+				results[results.length] = elems[i];
+			}
+		}
+		return results;
+	}
+}
