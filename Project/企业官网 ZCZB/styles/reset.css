@@ -1,0 +1,18 @@
+/* CSS Reset 			----------------------------------------*/
+body,div,ul,li,h1,h2,h3,h4,h5,h6,form,input,textarea,p{
+	padding:0;
+	margin:0;
+	font:14px/1.5 "微软雅黑",sans-serif;
+}
+ul{
+	list-style-type:none;
+}
+a{
+	text-decoration: none;
+}
+a:visited,a:active,a:link,a:hover{
+	color: #000;
+}
+img{
+	border:0;
+}
